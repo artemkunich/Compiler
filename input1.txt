@@ -1,0 +1,24 @@
+{
+	float id;
+	int i;
+	float[9][9][8] array;
+	i = 0;
+	while(true)
+	{
+		id = 5.5 * i;
+		i = i + 1;
+		int f;
+		array[f][0][1] = 2;
+		array[i] = 0;
+		while(i<9){
+			
+			int[2] array2;
+			i = array2[i];
+			array2[i] = i;
+		}
+		int[2] array3;
+		array3[0] = 3;
+		int a;
+		a = 7;
+	}
+}

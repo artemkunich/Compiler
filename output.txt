@@ -1,0 +1,23 @@
+	i = 0
+L1:	iffalse true goto L2
+	id = 5.500000 * i
+	i = i + 1
+	t1 = f * 576
+	t2 = 0 * 64
+	t1 = t1 + t2
+	t2 = 1 * 8
+	t1 = t1 + t2
+	array[t1] = 2
+	t1 = i * 576
+	array[t1] = 0
+L3:	iffalse i < 9 goto L4
+	t1 = i * 4
+	i = array2[t1]
+	t1 = i * 4
+	array2[t1] = i
+	goto L3
+L4:	t1 = 0 * 4
+	array3[t1] = 3
+	a = 7
+	goto L1
+L2:
