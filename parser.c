@@ -117,7 +117,7 @@ FILE* sourseCodeFile;
 int used;
 int blockUsed;
 
-void move(){ look = scan(sourseCodeFile, hashtable); }
+void move(){ look = getNextToken(sourseCodeFile, hashtable); }
 
 void match (int tag){
 	if(tag == look->tag){

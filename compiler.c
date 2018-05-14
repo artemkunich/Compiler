@@ -6,23 +6,9 @@
 #include "lexer.h"
 #include "parser.h"
 
-
 #define HASHTABLE_BASIS 17
 #define STR_MAXLENGTH 200
 #define LOCSTR_MAXLENGTH 200
-
-void throwExeption(char* msg, ...){
-	va_list ptr;	
-	va_start(ptr, msg);
-	
-	printf("%s. ","Error");
-	vprintf(msg, ptr);
-	
-	va_end(ptr);
-	
-	getchar();
-	exit(-1);
-}
 
 static char strTemp[STR_MAXLENGTH];
 
@@ -108,7 +94,6 @@ void writeSyntaxTree(Node* nodePt, int indent){
 }
 
 
-FILE* fpIn;
 FILE* fpOut;
 static int labels;
 
@@ -214,6 +199,12 @@ Node* reduce(Node* nodePt){
 	return nodePt;
 }
 
+Node* generateOutput(FILE* fp, Node* nodePt, int b, int a){
+	fpOut = fp;
+	return generate(nodePt, b, a);
+
+}
+
 Node* generate(Node* nodePt, int b, int a){
 	Node *node1, *node2, *node3, *returnNode;
 	char *strPt1, *strPt2;
@@ -299,27 +290,4 @@ Node* generate(Node* nodePt, int b, int a){
 	}	
 	if(a != 0) emitlabel(a);
 	return returnNode;
-}
-
-
-int main(int argc, char** argv){
-	if(argc < 3){
-		throwExeption("Incorrect number of arguments. Expected %i, actual %i", 2, argc);	
-	}
-	
-	char* fileNamePt = argv[1];
-	FILE* fpIn = fopen( fileNamePt, "r" );	
-	Node* nd = program(fpIn);
-	fclose(fpIn);		
-
-	fileNamePt = argv[2];
-	fpOut = fopen( fileNamePt, "w" );
-	generate(nd,0,0);
-	fclose(fpOut);
-	
-	if((argc > 3) && (strcmp(argv[2],"pst"))){
-		writeSyntaxTree(nd, 0);
-	}
-	
-	return 0;
 }

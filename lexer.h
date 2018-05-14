@@ -37,6 +37,6 @@ Token* tokenWord(int, char*);
 char* tokenToString(Token*);
 char* tokenTagToString(int);
 
-Token* scan(FILE*, HashtableElement**);
+Token* getNextToken(FILE*, HashtableElement**);
 void reserve(HashtableElement**, Token*);
 HashtableElement** idHashtableInitialize(int);

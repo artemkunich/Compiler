@@ -150,7 +150,7 @@ int readAndEqualch(FILE* fp, char e){
 	return 0;	
 }
 
-Token* scan(FILE* fp, HashtableElement** hashtable){	
+Token* getNextToken(FILE* fp, HashtableElement** hashtable){	
 
 	char peek = ' ';
 	
